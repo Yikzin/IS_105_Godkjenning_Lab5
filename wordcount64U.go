@@ -6,18 +6,15 @@ import (
     "log"
     "os"
     "unicode"
-    "github.com/pkg/profile"
 )
 
 func readbyte(r io.Reader) (rune, error) {
-    var buf [1]byte
+    var buf [64]byte
     _, err := r.Read(buf[:])
     return rune(buf[0]), err
 }
 
 func main() {
-
-    defer profile.Start(profile.CPUProfile, profile.ProfilePath(".")).Stop()
 
     f, err := os.Open(os.Args[1])
     if err != nil {

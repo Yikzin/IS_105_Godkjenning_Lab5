@@ -10,7 +10,7 @@ import (
 )
 
 func readbyte(r io.Reader) (rune, error) {
-    var buf [1]byte
+    var buf [64]byte
     _, err := r.Read(buf[:])
     return rune(buf[0]), err
 }
